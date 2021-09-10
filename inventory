@@ -1,0 +1,10 @@
+[builders]
+api-auth-a.ostack.met.no
+api-auth-b.ostack.met.no
+
+[keystone]
+api-auth-a.ostack.met.no
+api-auth-b.ostack.met.no
+
+[ostack:children]
+keystone

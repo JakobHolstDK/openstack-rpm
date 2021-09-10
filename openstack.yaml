@@ -1,0 +1,63 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+   - name: Dump all variables
+     action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
+
+- hosts: builders
+  gather_facts: yes
+  roles:
+   - role: ansible-role-ostack-component
+     components:
+             "keystone":
+                ostackversion: "stable/stein"
+             "horizon":
+                ostackversion: "stable/stein"
+             "glance":
+                ostackversion: "stable/stein"
+             "swift":
+                ostackversion: "stable/stein"
+
+
+- hosts: builders
+  gather_facts: yes
+  roles:
+   - role: ansible-role-ostack-component
+     components:
+             "keystone":
+                ostackversion: "stable/wallaby"
+             "horizon":
+                ostackversion: "stable/wallaby"
+             "glance":
+                ostackversion: "stable/wallaby"
+             "swift":
+                ostackversion: "stable/wallaby"
+
+- hosts: builders
+  gather_facts: yes
+  roles:
+   - role: ansible-role-ostack-component
+     components:
+             "keystone":
+                ostackversion: "stable/train"
+             "horizon":
+                ostackversion: "stable/train"
+             "glance":
+                ostackversion: "stable/train"
+             "swift":
+                ostackversion: "stable/train"
+- hosts: builders
+  gather_facts: yes
+  roles:
+   - role: ansible-role-ostack-component
+     components:
+             "keystone":
+                ostackversion: "stable/stein"
+             "horizon":
+                ostackversion: "stable/stein"
+             "glance":
+                ostackversion: "stable/stein"
+             "swift":
+                ostackversion: "stable/stein"
+

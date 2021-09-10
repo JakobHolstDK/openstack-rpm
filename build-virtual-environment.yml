@@ -1,0 +1,29 @@
+- name: 'clone git repo ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})'
+  ansible.builtin.git:
+    repo: 'https://github.com/openstack/{{ outer_item.key }}.git'
+    dest: '/tmp/builder/checkout/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}'
+    version: '{{ outer_item.value.ostackversion }}'
+
+- name: "Cleanup - Recursively remove directory ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})"
+  ansible.builtin.file:
+    path: '/tmp/builder/virtualenvironments/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv'
+    state: absent
+
+- name: "Build a virtual environment face 1 init virtual env  ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})"
+  pip:
+    name: pip
+    virtualenv: '/tmp/builder/virtualenvironments/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv'
+    state: latest
+
+- name: "Build a virtual environment face 2 : update pip ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})"
+  pip:
+    name: ['setuptools', 'setuptools-rust', 'wheel']
+    virtualenv: '/tmp/builder/virtualenvironments/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv'
+    state: latest
+
+- name: "Build a virtual environment for ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})"
+  pip:
+    requirements: '/tmp/builder/checkout/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/requirements.txt'
+    virtualenv: '/tmp/builder/virtualenvironments/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv'
+    state: latest
+
