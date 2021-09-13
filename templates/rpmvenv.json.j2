@@ -1,0 +1,29 @@
+{
+    "extensions": {
+        "enabled": [
+            "python_venv",
+            "blocks"
+        ]
+    },
+    "core": {
+        "group": "Application/System",
+        "license": "MIT",
+        "name": "openstack-{{ outer_item.key  }}-{{ outer_item.value.ostackversion.split("/")[1] }}-venv",
+        "summary": "Compiled stein openstack environment for {{ outer_item.key }} ",
+        "version": "1.0.0"
+    },
+    "python_venv": {
+        "name": "openstack_{{ outer_item.key  }}_{{ outer_item.value.ostackversion.split("/")[1] }}",
+        "path": "/var/lib/openstack/venv/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv/"
+    },
+    "blocks": {
+        "desc": [
+            "Virtual environment for Openstack {{ outer_item.key }} {{ outer_item.value.ostackversion }}",
+            "-----------------------------------------------",
+            "This is a compiled version of the Openstack {{ outer_item.key }} component",
+            "",
+	    "BLABLABLABL"
+        ]
+    }
+}
+

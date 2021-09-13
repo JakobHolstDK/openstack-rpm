@@ -5,7 +5,7 @@
    - name: Dump all variables
      action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
 
-- hosts: builders
+- hosts: builder
   gather_facts: yes
   roles:
    - role: ansible-role-ostack-component
@@ -20,21 +20,7 @@
                 ostackversion: "stable/stein"
 
 
-- hosts: builders
-  gather_facts: yes
-  roles:
-   - role: ansible-role-ostack-component
-     components:
-             "keystone":
-                ostackversion: "stable/wallaby"
-             "horizon":
-                ostackversion: "stable/wallaby"
-             "glance":
-                ostackversion: "stable/wallaby"
-             "swift":
-                ostackversion: "stable/wallaby"
-
-- hosts: builders
+- hosts: builder
   gather_facts: yes
   roles:
    - role: ansible-role-ostack-component

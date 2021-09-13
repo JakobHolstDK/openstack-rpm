@@ -1,0 +1,9 @@
+---
+- hosts: builder
+  gather_facts: yes
+  tasks:  
+  - name: Template a file to /etc/file.conf
+    ansible.builtin.template:
+      src: templates/rpmvenv.json.j2
+      dest: '/tmp/rmpvenv.json'
+

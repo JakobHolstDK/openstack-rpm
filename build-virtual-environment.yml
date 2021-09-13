@@ -27,3 +27,9 @@
     virtualenv: '/tmp/builder/virtualenvironments/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv'
     state: latest
 
+- name: Template a file to /etc/file.conf
+  ansible.builtin.template:
+    src: templates/rpmvenv.json.j2
+    dest: '/var/lib/venv/openstack/venv/rpmvenv/{{ outer_item.key }}.{{ outer_item.value.ostackversion.split("/")[1] }}.rmpvenv.json'
+    force: yes
+

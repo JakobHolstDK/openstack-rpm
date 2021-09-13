@@ -1,8 +1,8 @@
-- name: awx-turnkey-venv
+- name: builder
   distro: rhel-8.4
   memory: 4096
   vcpus: 4
-  disk: 10000
+  disk: 100000
   bootcmd:
     - subscription-manager register --org=14498519 --activationkey=virt-lightening
     - subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms

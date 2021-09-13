@@ -8,6 +8,12 @@
       or ( ansible_distribution == "CentOS" and ansible_distribution_major_version|int in [7, 8] )
       or ( ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] )
 
+- name: ansible create directory example
+  file:
+    path: /var/lib/venv/openstack/venv/rpmvenv/
+    state: directory
+    recurse: yes
+
 - name: Create a file for ldconfig to load to ensure access to /usr/local/lib
   ansible.builtin.copy:
     src: lib.local.usr.conf
@@ -16,12 +22,11 @@
     group: root
     mode: '0644'
 
-# This does not do the needfull
-- name: Run ldconfig and enable accces
-  ansible.builtin.command: ldconfig 
+- name: run ldconfig in a shell
+  ansible.builtin.shell: ldconfig
   become: True
 
-- name: "Install tools on build servers {{ item }}"
+- name: "Install tools on build servers "
   ansible.builtin.package:
     name:  '{{ item  }}'
     state: present
@@ -35,6 +40,7 @@
     - "libtool" 
     - "gcc"
     - "zlib-devel"
+    - "rpm-build"
       #    - "liberasurecode-devel"
 
 
@@ -82,7 +88,15 @@
     chdir: /tmp/builder/checkout/liberasurecode
   become: True
 
-- name: "Build the virtual environment for the openstack components {{ outer_item.key }}"
+- name: run pip update
+  ansible.builtin.command: pip3 install --upgrade pip
+  become: True
+
+- name: run pip install rpmvenv
+  ansible.builtin.command: pip3 install rpmvenv
+  become: True
+
+- name: "Build the virtual environment for the openstack components "
   include: build-virtual-environment.yml
   loop: '{{ components | dict2items }}'
   loop_control:

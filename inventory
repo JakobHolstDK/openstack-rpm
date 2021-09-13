@@ -1,10 +1,2 @@
-[builders]
-api-auth-a.ostack.met.no
-api-auth-b.ostack.met.no
+builder ansible_host=192.168.123.5 ansible_user=root ansible_python_interpreter=/usr/libexec/platform-python ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o GSSAPIAuthentication=no -o GSSAPIKeyExchange=no -o StrictHostKeyChecking=no"
 
-[keystone]
-api-auth-a.ostack.met.no
-api-auth-b.ostack.met.no
-
-[ostack:children]
-keystone
