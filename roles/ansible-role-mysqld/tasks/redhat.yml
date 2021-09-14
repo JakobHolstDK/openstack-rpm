@@ -1,5 +1,5 @@
 - name: Install repo from oracle
-  shell: "rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm"
+  shell: "rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm || echo 'already installed' "
 
 - name: redhat | Install tools on target servers
   ansible.builtin.package:
