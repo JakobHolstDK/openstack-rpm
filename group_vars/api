@@ -6,7 +6,7 @@ rabbitmq_config:
   durable: true
   exchange_name: ostackexchange
   type: fanout
-    routing_key: ostackkey
-    tags: 'ha-mode=all,ha-sync-mode=automatic'
+  routing_key: ostackkey
+  tags: 'ha-mode=all,ha-sync-mode=automatic'
 rabbitmq_master: api-auth-a
 
