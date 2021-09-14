@@ -2,7 +2,7 @@ config_rabbitmq_ha: true
 enable_rabbitmq_clustering: true
 erlang_cookie: LSKNKBELKPSTDBBCHETL
 rabbitmq_config:
-  - queue_name: logstash
+    queue_name: logstash
     durable: true
     exchange_name: logstash
     type: fanout
