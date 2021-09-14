@@ -15,8 +15,13 @@
   notify: restart rabbitmq-server
 
 - name: rabbitmq_ha_config | creating queue(s)
-  command: "rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} {{ rabbitmq_durable }}"
+  command: "echo rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} {{ rabbitmq_durable }}"
   run_once: true
+  register: myresult
+
+- name: Display all variables/facts known for a host
+  ansible.builtin.debug:
+   var: myresult 
 
 - name: rabbitmq_ha_config | setting up ha on queue(s)
   rabbitmq_policy: name='ha-all' pattern='{{ rabbitmq_queue_name }}' tags="{{ rabbitmq_tags }}" state=present
