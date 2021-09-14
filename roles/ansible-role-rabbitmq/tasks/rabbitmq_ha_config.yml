@@ -14,26 +14,19 @@
   shell: chmod +x /usr/sbin/rabbitmqadmin
   notify: restart rabbitmq-server
 
-- name: Display all variables/facts known for a host
-  ansible.builtin.debug:
-    var: " {{ rabbitmq_config }}"
+- name: rabbitmq_ha_config | creating queue(s)
+  command: "rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} {{ irabbitmq_durable }}"
+  run_once: true
 
-#- name: rabbitmq_ha_config | creating queue(s)
-# command: "rabbitmqadmin declare queue name={{ rabbitmq_config.queue_name }} {{ rabbitmq_config.durable }}"
-# run_once: true
+- name: rabbitmq_ha_config | setting up ha on queue(s)
+  rabbitmq_policy: name='ha-all' pattern='{{ rabbitmq_queue_name }}' tags="{{ rabbitmq_tags }}" state=present
+  run_once: true
 
-#- name: rabbitmq_ha_config | setting up ha on queue(s)
-#  rabbitmq_policy: name='ha-all' pattern='{{ item.queue_name }}' tags="{{ item.queue_name.tags }}" state=present
-#  run_once: true
-#  with_items: rabbitmq_config
+- name: rabbitmq_ha_config | creating exchange(s)
+  command: rabbitmqadmin declare exchange name={{ rabbitmq_exchange_name }} type={{ rabbitmq_type }}
+  run_once: true
 
-#- name: rabbitmq_ha_config | creating exchange(s)
-#  command: rabbitmqadmin declare exchange name={{ item.queue_name.exchange_name }} type={{ item.queue_name.type }}
-#  run_once: true
-#  with_items: rabbitmq_config
-
-#- name: rabbitmq_ha_config | creating binding(s)
-#  command: rabbitmqadmin declare binding source={{ item.queue_name.exchange_name }} destination_type="queue" destination={{ item.queue_name }} routing_key={{ item.quename.routing_key }}
-#  run_once: true
-#  with_items: rabbitmq_config
+- name: rabbitmq_ha_config | creating binding(s)
+  command: rabbitmqadmin declare binding source={{ rabbitmq_exchange_name }} destination_type="queue" destination={{ rabbitmq_queue_name }} routing_key={{ rabbitmq_routing_key }}
+  run_once: true
 
