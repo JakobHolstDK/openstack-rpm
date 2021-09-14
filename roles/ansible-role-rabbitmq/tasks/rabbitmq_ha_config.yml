@@ -21,7 +21,7 @@
 
 - name: Display all variables/facts known for a host
   ansible.builtin.debug:
-   var: myresult 
+  var: myresult 
 
 - name: rabbitmq_ha_config | setting up ha on queue(s)
   rabbitmq_policy: name='ha-all' pattern='{{ rabbitmq_queue_name }}' tags="{{ rabbitmq_tags }}" state=present
