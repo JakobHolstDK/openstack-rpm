@@ -1,7 +1,8 @@
 ---
-- name: Print the rabbit mq config
+- name: Display all variables/facts known for a host
   ansible.builtin.debug:
-    msg: rabbitmq_config.queue_name
+    var: hostvars[inventory_hostname]
+    verbosity: 4
 
 - name: rabbitmq_ha_config | install rabbitMQ admin
   shell: wget http://guest:guest@localhost:55672/cli/rabbitmqadmin
