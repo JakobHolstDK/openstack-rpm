@@ -1,6 +1,6 @@
 ---
 - name: rabbitmq_ha_config | install rabbitMQ admin
-  shell: wget http://guest:guest@localhost:15672/cli/rabbitmqadmin
+  shell: wget http://guest:guest@localhost:55672/cli/rabbitmqadmin
 
 - name: rabbitmq_ha_config | moving the rabbitMQ Admin
   shell: mv rabbitmqadmin /usr/sbin
@@ -8,6 +8,12 @@
 - name: rabbitmq_ha_config | making executable rabbitMQ Admin
   shell: chmod +x /usr/sbin/rabbitmqadmin
   notify: restart rabbitmq-server
+
+- name: Print return information from the previous task
+  ansible.builtin.debug:
+    var: rabbitmq_config
+    verbosity: 2
+
 
 - name: rabbitmq_ha_config | creating queue(s)
   command: rabbitmqadmin declare queue name={{ item.queue_name }} durable={{ item.durable|lower }}
