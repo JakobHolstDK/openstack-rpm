@@ -28,9 +28,9 @@
       - rabbitmq_erlang
       - rabbitmq_server-noarch
 
-- name: redhat | enabling the RabbitMQ Management Console
-  rabbitmq_plugin: names=rabbitmq_management state=enabled
-  notify: restart rabbitmq-server
+#- name: redhat | enabling the RabbitMQ Management Console
+#  rabbitmq_plugin: names=rabbitmq_management state=enabled
+#  notify: restart rabbitmq-server
 
 - name: redhat | ensuring that the RabbitMQ service is running
   service: name=rabbitmq-server state=started enabled=yes
