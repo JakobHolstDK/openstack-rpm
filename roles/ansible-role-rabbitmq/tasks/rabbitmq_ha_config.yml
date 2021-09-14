@@ -15,7 +15,7 @@
 
 - name: Print the rabbit mq config
   ansible.builtin.debug:
-    msg: rabbitmq_config.queue_name
+    msg: "{{ rabbitmq_config.queue_name }}"
 
 - name: rabbitmq_ha_config | creating queue(s)
   command: "rabbitmqadmin declare queue name={{ item.queue_name }} {{ item.durable }}"
