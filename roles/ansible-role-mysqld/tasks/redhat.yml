@@ -10,6 +10,8 @@
     - "logrotate"
     - "wget"
     - "python3"
-    - "mysql80-community"
   become: True
 
+
+- name: Install repo from oracle
+  shell: "dnf install -y --disablerepo=rhel-8-for-x86_64-appstream-rpms mysql-community-server"
