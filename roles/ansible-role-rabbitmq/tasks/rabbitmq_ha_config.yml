@@ -1,7 +1,7 @@
 ---
 - name: Print the rabbit mq config
   ansible.builtin.debug:
-    msg: rabbitmq_config 
+    msg: rabbitmq_config.queue_name
 
 - name: rabbitmq_ha_config | install rabbitMQ admin
   shell: wget http://guest:guest@localhost:55672/cli/rabbitmqadmin
