@@ -3,11 +3,17 @@
     state: present
     key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
 
+- name: redhat | add the erlang repo
+  yum_repository:
+    name: erlang
+    description: Erlang repo
+    baseurl: https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/gpg.E495BB49CC4BBE5B.key
+
 - name: redhat | add the rabbit mq repo
   yum_repository:
     name: rabbitmq
     description: Rabbitmq repo
-    baseurl: https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey
+    baseurl: https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/gpg.9F4587F226208342.key
 
 - name: redhat | Install rabbitmq on target servers
   ansible.builtin.package:
