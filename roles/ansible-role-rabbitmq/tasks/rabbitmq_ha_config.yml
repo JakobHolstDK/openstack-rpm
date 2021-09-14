@@ -18,7 +18,7 @@
     msg: rabbitmq_config 
 
 - name: rabbitmq_ha_config | creating queue(s)
-  command: rabbitmqadmin declare queue name={{ item.queue_name }} durable={{ item.durable|lower }}
+  command: "rabbitmqadmin declare queue name={{ item.queue_name }} {{ item.durable }}"
   run_once: true
   with_items: rabbitmq_config
 
