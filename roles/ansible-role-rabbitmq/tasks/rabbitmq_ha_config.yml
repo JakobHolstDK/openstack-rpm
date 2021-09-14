@@ -21,7 +21,7 @@
 
 - name: Display all variables/facts known for a host
   ansible.builtin.debug:
-    var: "{{ item.durable }}"
+    var: "{{ item.rabbitmq_config.durable }}"
   with_items: rabbitmq_config
 
 #- name: rabbitmq_ha_config | creating queue(s)
