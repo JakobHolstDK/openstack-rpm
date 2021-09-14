@@ -8,7 +8,8 @@
 - hosts: api
   gather_facts: yes
   roles:
-   - role: ansible-role-rabbitmq
+#   - role: ansible-role-rabbitmq
+   - role: ansible-role-mysqld
 
 
 
