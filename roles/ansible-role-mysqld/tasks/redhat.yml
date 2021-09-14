@@ -1,3 +1,5 @@
+- name: Install repo from oracle
+  shell: "rpm -ivh https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm"
 
 - name: redhat | Install tools on target servers
   ansible.builtin.package:
@@ -8,21 +10,6 @@
     - "logrotate"
     - "wget"
     - "python3"
+    - "mysql80-community"
   become: True
-
-#- name: Add repository for mysql
-#  yum_repository:
-#    name: mysql
-#    description: mysql repo
-#    baseurl: https://repo.mysql.com/yum/
-#  become: True
-
-  
-
-- name: Install mysqld from the right source
-  yum:
-    name:  [ "mysql-server:8" ]
-    disablerepo: "*"
-    enablerepo:
-      - rhel-8-for-x86_64-appstream-rpms
 
