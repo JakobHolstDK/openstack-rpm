@@ -10,13 +10,19 @@
     - "python3"
   become: True
 
-- name: Add repository for mysql
-  yum_repository:
-    name: mysql
-    description: mysql repo
-    baseurl: https://repo.mysql.com/yum/
-  become: True
+#- name: Add repository for mysql
+#  yum_repository:
+#    name: mysql
+#    description: mysql repo
+#    baseurl: https://repo.mysql.com/yum/
+#  become: True
 
   
 
+- name: Install mysqld from the right source
+  yum:
+    name:  [ "mysql-server:8.0.21" ]
+    disablerepo: "*"
+    enablerepo:
+      - rhel-8-for-x86_64-appstream-rpms
 

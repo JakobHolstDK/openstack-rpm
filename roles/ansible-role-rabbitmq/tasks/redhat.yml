@@ -36,6 +36,3 @@
 - name: redhat | enabling the RabbitMQ Management Console
   rabbitmq_plugin: names=rabbitmq_management state=enabled
   notify: restart rabbitmq-server
-
-
-
