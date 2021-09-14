@@ -21,7 +21,7 @@
 
 - name: Install mysqld from the right source
   yum:
-    name:  [ "mysql-server:i8.0.21-1.module+el8.2.0+7855+47abd494" ]
+    name:  [ "mysql-server:8.0.21-1.module+el8.2.0+7855+47abd494" ]
     disablerepo: "*"
     enablerepo:
       - rhel-8-for-x86_64-appstream-rpms
