@@ -16,13 +16,6 @@
       - "openssl-devel"
 
    
-   - name: 'clone git erlang repo'
-     ansible.builtin.git:
-       repo: 'https://github.com/rabbitmq/erlang-rpm.git'
-       dest: '/tmp/checkout/rabbitmq/{{ item }}'
-       version: '{{ item }}'
-     with_items:
-       - erlang-18.x
 
 
 

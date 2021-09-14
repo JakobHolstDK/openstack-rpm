@@ -13,18 +13,10 @@
     name:  '{{ item  }}'
     state: present
   with_items:
-    - "git"
     - "python3-pip"
     - "python3-devel"
-    - "make" 
-    - "autoconf" 
-    - "automake" 
-    - "libtool" 
-    - "gcc"
-    - "zlib-devel"
-    - "rpm-build"
-      #    - "liberasurecode-devel"
 
-- name: "Build the virtual environment for the rabbitmq version and package toghether with corresponding erlang "
-  include: build.rabbitmq-erlang.yml
 
+- name: "Install Rabbitmq and correponding erlang"
+  rabbitversion: "thebest"
+  include: roles/ansible-role-rabbitmq/install.rabbitmq.yml
