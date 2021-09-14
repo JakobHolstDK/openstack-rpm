@@ -15,7 +15,7 @@
   notify: restart rabbitmq-server
 
 - name: rabbitmq_ha_config | creating queue(s)
-  command: "rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} {{ irabbitmq_durable }}"
+  command: "rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} {{ rabbitmq_durable }}"
   run_once: true
 
 - name: rabbitmq_ha_config | setting up ha on queue(s)
