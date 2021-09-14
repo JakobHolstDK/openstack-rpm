@@ -12,7 +12,7 @@
 - name: Print return information from the previous task
   ansible.builtin.debug:
     var: rabbitmq_config
-    verbosity: 2
+    verbosity: 0
 
 
 - name: rabbitmq_ha_config | creating queue(s)
