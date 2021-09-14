@@ -19,6 +19,7 @@
     - "socat"
     - "logrotate"
     - "wget"
+    - "python3"
   become: True
 
 - name: Install rabbit from the right source
