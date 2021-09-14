@@ -5,7 +5,7 @@
 - name: redhat | Copy rabbitmq repo to tar 
   ansible.builtin.copy:
     src: rabbitmq.repo
-    dest: /etc/yum.repo.d/rabbitmq.repo
+    dest: /etc/yum.repos.d/rabbitmq.repo
     owner: root
     group: root
     mode: '0644'
