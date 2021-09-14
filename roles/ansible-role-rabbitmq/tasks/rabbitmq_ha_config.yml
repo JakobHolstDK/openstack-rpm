@@ -19,6 +19,11 @@
     var: "{{ item }}"
   with_items: rabbitmq_config
 
+- name: Display all variables/facts known for a host
+  ansible.builtin.debug:
+    var: "{{ item.durable }}"
+  with_items: rabbitmq_config
+
 #- name: rabbitmq_ha_config | creating queue(s)
 #  command: "rabbitmqadmin declare queue name={{ item.queue_name }} {{ item.durable }}"
 #  run_once: true
