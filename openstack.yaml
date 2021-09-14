@@ -9,7 +9,7 @@
   gather_facts: yes
   roles:
 #   - role: ansible-role-rabbitmq
-   - role: ansible-role-mysqld
+    - role: ansible-role-mysqld
 
 
 
