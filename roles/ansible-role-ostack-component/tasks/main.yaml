@@ -99,8 +99,3 @@
 - name: run pip install rpmvenv
   ansible.builtin.command: pip3 install rpmvenv
   become: True
-
-- name: "Build the virtual environment for the openstack components "
-  roles: 
-    ansible-role-rabbitmq
-    

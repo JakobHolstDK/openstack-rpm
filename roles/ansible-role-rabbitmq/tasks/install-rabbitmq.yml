@@ -8,15 +8,30 @@
       or ( ansible_distribution == "CentOS" and ansible_distribution_major_version|int in [7, 8] )
       or ( ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] )
 
-- name: "Install tools on build servers "
+
+
+- name: add the rabbit repo key'
+  rpm_key:
+    state: present
+    key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+
+
+- name: add the erlang repo
+  yum_repository:
+    name: erlang
+    description: Erlang repo
+    baseurl: https://packagecloud.io/rabbitmq/erlang/gpgkey
+
+- name: add the rabbit mq repo
+  yum_repository:
+    name: rabbitmq
+    description: Rabbitmq repo
+    baseurl: https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey
+
+
+- name: "Install rabbitmq on target servers "
   ansible.builtin.package:
     name:  '{{ item  }}'
     state: present
   with_items:
-    - "python3-pip"
-    - "python3-devel"
-
-
-- name: "Install Rabbitmq and correponding erlang"
-  rabbitversion: "thebest"
-  roles: roles/ansible-role-rabbitmq/install.rabbitmq.yml
+    - "rabbitmq-server"

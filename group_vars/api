@@ -1,0 +1,12 @@
+config_rabbitmq_ha: true
+enable_rabbitmq_clustering: true
+erlang_cookie: kdsfvjlsdflksdfslkdfsd
+rabbitmq_config:
+  - queue_name: openstackqueue
+    durable: true
+    exchange_name: ostackexchange
+    type: fanout
+    routing_key: ostackkey
+    tags: 'ha-mode=all,ha-sync-mode=automatic'
+rabbitmq_master: api-auth-b.ostack.met.no
+

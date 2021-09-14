@@ -1,0 +1,27 @@
+- name: redhat | add the rabbit repo key'
+  rpm_key:
+    state: present
+    key: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+
+- name: redhat | add the rabbit mq repo
+  yum_repository:
+    name: rabbitmq
+    description: Rabbitmq repo
+    baseurl: https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey
+
+- name: redhat | Install rabbitmq on target servers
+  ansible.builtin.package:
+    name:  '{{ item  }}'
+    state: present
+  with_items:
+    - "rabbitmq-server"
+
+- name: redhat | enabling the RabbitMQ Management Console
+  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  notify: restart rabbitmq-server
+
+- name: redhat | ensuring that the RabbitMQ service is running
+  service: name=rabbitmq-server state=started enabled=yes
+
+
+
