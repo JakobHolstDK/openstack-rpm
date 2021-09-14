@@ -1,0 +1,22 @@
+
+- name: redhat | Install tools on target servers
+  ansible.builtin.package:
+    name:  '{{ item  }}'
+    state: present
+  with_items:
+    - "socat"
+    - "logrotate"
+    - "wget"
+    - "python3"
+  become: True
+
+- name: Add repository for mysql
+  yum_repository:
+    name: mysql
+    description: mysql repo
+    baseurl: https://repo.mysql.com/yum/
+  become: True
+
+  
+
+
