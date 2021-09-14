@@ -14,10 +14,15 @@
   shell: chmod +x /usr/sbin/rabbitmqadmin
   notify: restart rabbitmq-server
 
-- name: rabbitmq_ha_config | creating queue(s)
-  command: "rabbitmqadmin declare queue name={{ item.queue_name }} {{ item.durable }}"
-  run_once: true
+- name: Display all variables/facts known for a host
+  ansible.builtin.debug:
+    var: "{{ item }}"
   with_items: rabbitmq_config
+
+#- name: rabbitmq_ha_config | creating queue(s)
+#  command: "rabbitmqadmin declare queue name={{ item.queue_name }} {{ item.durable }}"
+#  run_once: true
+#  with_items: rabbitmq_config
 
 #- name: rabbitmq_ha_config | setting up ha on queue(s)
 #  rabbitmq_policy: name='ha-all' pattern='{{ item.queue_name }}' tags="{{ item.queue_name.tags }}" state=present
