@@ -1,23 +1,7 @@
 ---
-- hosts: all
+
+- hosts: api
   gather_facts: yes
-  tasks:
-   - name: Dump all variables
-     action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
-   - name: "Install tools on build servers "
-     ansible.builtin.package:
-       name:  '{{ item  }}'
-       state: present
-     with_items:
-      - "git"
-      - "rpm-build"
-      - "wget"
-      - "ncurses-devel"
-      - "openssl-devel"
-
-   
-
-
-
-
+  roles:
+   - role: ansible-role-rabbitmq
 

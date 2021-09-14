@@ -101,9 +101,6 @@
   become: True
 
 - name: "Build the virtual environment for the openstack components "
-  include: build-virtual-environment.yml
-  loop: '{{ components | dict2items }}'
-  loop_control:
-    loop_var: outer_item
-    label: '{{ outer_item.key }}'
-
+  roles: 
+    ansible-role-rabbitmq
+    

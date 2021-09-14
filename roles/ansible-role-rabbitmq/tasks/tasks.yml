@@ -19,4 +19,4 @@
 
 - name: "Install Rabbitmq and correponding erlang"
   rabbitversion: "thebest"
-  include: roles/ansible-role-rabbitmq/install.rabbitmq.yml
+  roles: roles/ansible-role-rabbitmq/install.rabbitmq.yml

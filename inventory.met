@@ -1,4 +1,5 @@
 [builder]
+api-auth-a.ostack.met.no
 
-api-auth-b.ostack.met.no
+[api]
 api-auth-b.ostack.met.no
