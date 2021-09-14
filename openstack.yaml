@@ -4,46 +4,27 @@
   tasks:
    - name: Dump all variables
      action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
+   - name: "Install tools on build servers "
+     ansible.builtin.package:
+       name:  '{{ item  }}'
+       state: present
+     with_items:
+      - "git"
+      - "rpm-build"
+      - "wget"
+      - "ncurses-devel"
+      - "openssl-devel"
 
-- hosts: builder
-  gather_facts: yes
-  roles:
-   - role: ansible-role-ostack-component
-     components:
-             "keystone":
-                ostackversion: "stable/stein"
-             "horizon":
-                ostackversion: "stable/stein"
-             "glance":
-                ostackversion: "stable/stein"
-             "swift":
-                ostackversion: "stable/stein"
+   
+   - name: 'clone git erlang repo'
+     ansible.builtin.git:
+       repo: 'https://github.com/rabbitmq/erlang-rpm.git'
+       dest: '/tmp/checkout/rabbitmq/{{ item }}'
+       version: '{{ item }}'
+     with_items:
+       - erlang-18.x
 
 
-- hosts: builder
-  gather_facts: yes
-  roles:
-   - role: ansible-role-ostack-component
-     components:
-             "keystone":
-                ostackversion: "stable/train"
-             "horizon":
-                ostackversion: "stable/train"
-             "glance":
-                ostackversion: "stable/train"
-             "swift":
-                ostackversion: "stable/train"
-- hosts: builders
-  gather_facts: yes
-  roles:
-   - role: ansible-role-ostack-component
-     components:
-             "keystone":
-                ostackversion: "stable/stein"
-             "horizon":
-                ostackversion: "stable/stein"
-             "glance":
-                ostackversion: "stable/stein"
-             "swift":
-                ostackversion: "stable/stein"
+
+
 

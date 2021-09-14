@@ -33,7 +33,7 @@
   with_items:
     - "git"
     - "python3-pip"
-    - "python3-virtualenv"
+    - "python3-devel"
     - "make" 
     - "autoconf" 
     - "automake" 
@@ -90,6 +90,10 @@
 
 - name: run pip update
   ansible.builtin.command: pip3 install --upgrade pip
+  become: True
+
+- name: run pip update
+  ansible.builtin.command: pip3 install --upgrade virtualenv
   become: True
 
 - name: run pip install rpmvenv

@@ -1,0 +1,30 @@
+- name: check if we're building on a supported os
+  assert:
+    fail_msg: "{{ role_name }} only supports ubuntu versions 16, 18, 20 and centos versions 6, 7!"
+    success_msg: "{{ role_name }} supports {{ ansible_distribution }} version {{ ansible_distribution_version }}"
+    quiet: "{{ not ansible_check_mode }}"
+    that:
+      ( ansible_distribution == "Ubuntu" and ansible_distribution_version|int in [16, 18, 20] )
+      or ( ansible_distribution == "CentOS" and ansible_distribution_major_version|int in [7, 8] )
+      or ( ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] )
+
+- name: "Install tools on build servers "
+  ansible.builtin.package:
+    name:  '{{ item  }}'
+    state: present
+  with_items:
+    - "git"
+    - "python3-pip"
+    - "python3-devel"
+    - "make" 
+    - "autoconf" 
+    - "automake" 
+    - "libtool" 
+    - "gcc"
+    - "zlib-devel"
+    - "rpm-build"
+      #    - "liberasurecode-devel"
+
+- name: "Build the virtual environment for the rabbitmq version and package toghether with corresponding erlang "
+  include: build.rabbitmq-erlang.yml
+

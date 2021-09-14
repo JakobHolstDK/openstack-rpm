@@ -1,0 +1,6 @@
+- name: 'clone git repo ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})'
+  ansible.builtin.git:
+    repo: 'https://github.com/openstack/{{ outer_item.key }}.git'
+    dest: '/tmp/builder/checkout/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}'
+    version: '{{ outer_item.value.ostackversion }}'
+
