@@ -18,6 +18,7 @@
   with_items:
     - "socat"
     - "logrotate"
+    - "wget"
   become: True
 
 - name: Install rabbit from the right source
