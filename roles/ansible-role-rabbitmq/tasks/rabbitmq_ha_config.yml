@@ -19,7 +19,7 @@
     var: " {{ rabbitmq_config }}"
 
 - name: rabbitmq_ha_config | creating queue(s)
-  command: "rabbitmqadmin declare queue name=rabbitmq_config.queue_name }} {{ rabbitmq_config.durable }}"
+  command: "rabbitmqadmin declare queue name={{ rabbitmq_config.queue_name }} {{ rabbitmq_config.durable }}"
   run_once: true
 
 #- name: rabbitmq_ha_config | setting up ha on queue(s)
