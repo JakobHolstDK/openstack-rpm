@@ -2,12 +2,31 @@
   shell: curl -1sLf 'https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-erlang/setup.rpm.sh' | sudo -E bash
   become: True
 
+- name: redhat | Copy rabbitmq repo to tar 
+  ansible.builtin.copy:
+    src: rabbitmq.repo
+    dest: /etc/yum.repo.d/rabbitmq.repo
+    owner: root
+    group: root
+    mode: '0644'
+  become: True
+
 - name: redhat | Install rabbitmq on target servers
   ansible.builtin.package:
     name:  '{{ item  }}'
     state: present
   with_items:
-    - "rabbitmq-server"
+    - "socat"
+    - "logrotate"
+  become: True
+
+- name: Install rabbit from the right source
+  yum:
+    name:  [ "erlang", "rabbitmq-server"]
+    disablerepo: "*"
+    enablerepo:
+      - rabbitmq_erlang
+      - rabbitmq_server-noarch
 
 - name: redhat | enabling the RabbitMQ Management Console
   rabbitmq_plugin: names=rabbitmq_management state=enabled
