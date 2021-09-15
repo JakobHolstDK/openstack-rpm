@@ -10,5 +10,5 @@
   with_items:
     - "mariadb-server"
     - "mariadb-common"
-    - "mariadb-client"
+    - "mariadb"
   become: True
