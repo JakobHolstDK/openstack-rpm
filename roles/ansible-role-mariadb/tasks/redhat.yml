@@ -1,26 +1,17 @@
-- name: redhat | Mariadb repo
-  yum_repository:
-    name: mariadb
-    description: Mariadb install repop
-    baseurl: https://yum.mariadb.org/10.1/centos7-amd64
-    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-    gpgcheck: yes
+#- name: redhat | Mariadb repo
+#  yum_repository:
+#   name: mariadb
+#    description: Mariadb install repop
+#    baseurl: https://yum.mariadb.org/10.1/centos7-amd64
+#    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+#    gpgcheck: yes
 
 - name: redhat | Install tools on target servers
   ansible.builtin.package:
     name:  '{{ item  }}'
     state: present
   with_items:
-    - "socat"
-    - "logrotate"
-    - "wget"
-    - "python3"
+    - "mariadb-server"
+    - "mariadb-common"
+    - "mariadb-client"
   become: True
-
-
-- name: Install mariadb from the rigth source
-  yum:
-    name:  [ "MariaDB-server", "MariaDB-client", "MariaDB-common"]
-    disablerepo: "rhel-8-for-x86_64-appstream-rpms"
-    enablerepo:
-      - mariadb
