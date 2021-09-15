@@ -21,6 +21,6 @@
 - name: Install mariadb from the rigth source
   yum:
     name:  [ "MariaDB-server", "MariaDB-client", "MariaDB-common"]
-    disablerepo: "*"
+#    disablerepo: "*"
     enablerepo:
       - mariadb
