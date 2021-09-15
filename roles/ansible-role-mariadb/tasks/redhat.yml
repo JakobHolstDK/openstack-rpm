@@ -1,4 +1,5 @@
 # Run the repo setup from maria db
+
 - name: redhat | add the mariadb repos
   shell: curl -1sLf 'https://downloads.mariadb.com/MariaDB/mariadb_repo_setup' | sudo -E bash
   become: True
