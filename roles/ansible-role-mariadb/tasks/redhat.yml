@@ -9,6 +9,52 @@
     state: present
   with_items:
     - python3
+    - libaio
+    - libpmem
+    - perl-Carp 
+    - perl-DBI  
+    - perl-Data-Dumper 
+    - perl-Digest   
+    - perl-Digest-MD5
+    - perl-Encode  
+    - perl-Errno     
+    - perl-Exporter  
+    - perl-File-Path 
+    - perl-File-Temp  
+    - perl-Getopt-Long   
+    - perl-HTTP-Tiny     
+    - perl-IO         
+    - perl-MIME-Base64   
+    - perl-Math-BigInt    
+    - perl-Math-Complex   
+    - perl-Net-SSLeay    
+    - perl-PathTools      
+    - perl-Pod-Escapes      
+    - perl-Pod-Perldoc   
+    - perl-Pod-Simple      
+    - perl-Pod-Usage     
+    - perl-Scalar-List-Utils     
+    - perl-Socket     
+    - perl-Storable      
+    - perl-Term-ANSIColor
+    - perl-Term-Cap           
+    - perl-Text-ParseWords      
+    - perl-Text-Tabs+Wrap    
+    - perl-Time-Local       
+    - perl-URI          
+    - perl-Unicode-Normalize       
+    - perl-constant     
+    - perl-interpreter     
+    - perl-libnet        
+    - perl-libs       
+    - perl-macros     
+    - perl-parent    
+    - perl-podlators      
+    - perl-threads   
+    - perl-threads-shared  
+    - perl-IO-Socket-IP        
+    - perl-IO-Socket-SSL         
+    - perl-Mozilla-CA    
   become: True
 
 - name: Install rabbit from the right source
