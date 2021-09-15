@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-vl down
+#vl down
 
 
 #Here we could setup virt-lightning.yaml
