@@ -18,5 +18,9 @@
   become: True
 
 
-- name: Install repo from oracle
-  shell: "dnf install -y --disablerepo=rhel-8-for-x86_64-appstream-rpms mysql-community-server"
+- name: Install mariadb from the rigth source
+  yum:
+    name:  [ "MariaDB-server", "MariaDB-client", "MariaDB-common"]
+    disablerepo: "*"
+    enablerepo:
+      - mariadb
