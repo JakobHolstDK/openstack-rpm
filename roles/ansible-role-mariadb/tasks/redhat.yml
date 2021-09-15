@@ -1,10 +1,7 @@
-#- name: redhat | Mariadb repo
-#  yum_repository:
-#   name: mariadb
-#    description: Mariadb install repop
-#    baseurl: https://yum.mariadb.org/10.1/centos7-amd64
-#    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-#    gpgcheck: yes
+# Run the repo setup from maria db
+- name: redhat | add the mariadb repos
+  shell: curl -1sLf 'https://downloads.mariadb.com/MariaDB/mariadb_repo_setup' | sudo -E bash
+  become: True
 
 - name: redhat | Install tools on target servers
   ansible.builtin.package:
