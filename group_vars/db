@@ -1,0 +1,2 @@
+ansible_role_mariadb_node1: mariadb-a
+ansible_role_mariadb_node1: mariadb-b
