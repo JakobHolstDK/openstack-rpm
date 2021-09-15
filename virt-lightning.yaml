@@ -37,5 +37,43 @@
     - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     - dnf clean all
 
+- name: mysql-a
+  distro: rhel-8.4
+  memory: 4096
+  vcpus: 4
+  root_disk_size: 100
+  bootcmd:
+    - subscription-manager register --org=14498519 --activationkey=virt-lightening
+    - subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+    - yum update -y
+    - systemctl enable --now cockpit.socket
+    - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    - dnf clean all
 
+- name: mysql-b
+  distro: rhel-8.4
+  memory: 4096
+  vcpus: 4
+  root_disk_size: 100
+  bootcmd:
+    - subscription-manager register --org=14498519 --activationkey=virt-lightening
+    - subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+    - yum update -y
+    - systemctl enable --now cockpit.socket
+    - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    - dnf clean all
+
+
+- name: mysql-c
+  distro: rhel-8.4
+  memory: 4096
+  vcpus: 4
+  root_disk_size: 100
+  bootcmd:
+    - subscription-manager register --org=14498519 --activationkey=virt-lightening
+    - subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+    - yum update -y
+    - systemctl enable --now cockpit.socket
+    - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    - dnf clean all
 
