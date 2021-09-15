@@ -37,7 +37,7 @@
     - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     - dnf clean all
 
-- name: mysql-a
+- name: mariadb-a
   distro: rhel-8.4
   memory: 4096
   vcpus: 4
@@ -50,7 +50,7 @@
     - dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     - dnf clean all
 
-- name: mysql-b
+- name: mariadb-b
   distro: rhel-8.4
   memory: 4096
   vcpus: 4
@@ -64,7 +64,7 @@
     - dnf clean all
 
 
-- name: mysql-c
+- name: mariadb-c
   distro: rhel-8.4
   memory: 4096
   vcpus: 4
