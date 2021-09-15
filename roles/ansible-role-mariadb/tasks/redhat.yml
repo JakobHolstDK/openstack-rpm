@@ -12,6 +12,7 @@
     - python3
     - libaio
     - libpmem
+    - lsof
     - perl-Carp 
     - perl-DBI  
     - perl-Data-Dumper 
