@@ -5,11 +5,11 @@
    - name: Dump all variables
      action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
 
-- hosts: api
+- hosts: db
   gather_facts: yes
   roles:
 #   - role: ansible-role-rabbitmq
-    - role: ansible-role-mysqld
+    - role: ansible-role-mariadb
 
 
 
