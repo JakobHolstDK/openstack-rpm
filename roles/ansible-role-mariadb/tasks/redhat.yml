@@ -57,6 +57,7 @@
     - perl-IO-Socket-IP        
     - perl-IO-Socket-SSL         
     - perl-Mozilla-CA    
+    - socat
   become: True
 
 - name: Install rabbit from the right source
