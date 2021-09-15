@@ -22,5 +22,5 @@
   yum:
     name:  [ "MariaDB-server", "MariaDB-client", "MariaDB-common"]
 #    disablerepo: "*"
-    enablerepo:
-      - mariadb
+#    enablerepo:
+#      - mariadb
