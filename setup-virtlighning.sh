@@ -7,7 +7,7 @@
 #Here redhat cleanup could and should cleanup orphans in the rhel subscriptions
 
 
-vl up
+#vl up
 
 echo "#Auto generated inventory for virt-lightening" > inventory.remote
 
