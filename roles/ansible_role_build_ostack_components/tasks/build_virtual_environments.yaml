@@ -139,5 +139,5 @@
 - name: Template a file to /etc/file.conf
   ansible.builtin.template:
     src: templates/rpmvenv.json.j2
-    dest: '/var/lib/venv/openstack/venv/rpmvenv/{{ outer_item.key }}.{{ _ansible_item_label.version.split("/")[1] }}.rmpvenv.json'
+    dest: '/var/lib/venv/openstack/venv/rpmvenv/{{ _ansible_item_label.name }}.{{ _ansible_item_label.version.split("/")[1] }}.rmpvenv.json'
     force: yes
