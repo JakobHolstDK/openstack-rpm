@@ -1,10 +1,17 @@
-config_rabbitmq_ha: true
-enable_rabbitmq_clustering: true
-erlang_cookie: LSKNKBELKPSTDBBCHETL
-rabbitmq_queue_name: logstash
-rabbitmq_durable: true
-rabbitmq_exchange_name: logstash
-rabbitmq_type: fanout
-rabbitmq_routing_key: logstash
-rabbitmq_tags: 'ha-mode=all,ha-sync-mode=automatic'
-rabbitmq_master: api-auth-a
+#Rabbit mq vars
+ansible_role_rabbitmq_config_rabbitmq_ha: true
+ansible_role_rabbitmq_config_enable_rabbitmq_clustering: true
+ansible_role_rabbitmq_configerlang_cookie: LSKNKBELKPSTDBBCHETL
+ansible_role_rabbitmq_queue_name: logstash
+ansible_role_rabbitmq_durable: true
+ansible_role_rabbitmq_exchange_name: logstash
+ansible_role_rabbitmq_type: fanout
+ansible_role_rabbitmq_routing_key: logstash
+ansible_role_rabbitmq_tags: 'ha-mode=all,ha-sync-mode=automatic'
+ansible_role_rabbitmq_master: api-auth-a
+
+#Mariadbvars
+ansible_role_mariadb_cluster_name: openstack
+ansible_role_mariadb_node1: mariadb-a
+ansible_role_mariadb_node2: mariadb-b
+#etc
