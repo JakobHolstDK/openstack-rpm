@@ -107,37 +107,39 @@
   ansible.builtin.command: pip3 install rpmvenv
   become: True
 
-- name: 'clone git repo ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})'
+- name: ' build_virtual_environments | clone git repo ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})'
   ansible.builtin.git:
     repo: 'https://github.com/openstack/{{ _ansible_item_label.name }}.git'
     dest: '/tmp/builder/checkout/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}'
     version: '{{ _ansible_item_label.version }}'
 
-- name: "Cleanup - Recursively remove directory ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+- name: " build_virtual_environments | Cleanup - Recursively remove directory ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
   ansible.builtin.file:
     path: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: absent
 
-- name: "Build a virtual environment face 1 init virtual env  ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+- name: " build_virtual_environments | Build a virtual environment face 1 init virtual env  ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
   pip:
     name: pip
     virtualenv: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: latest
 
-- name: "Build a virtual environment face 2 : update pip ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+- name: " build_virtual_environments | Build a virtual environment face 2 : update pip ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
   pip:
     name: ['setuptools', 'setuptools-rust', 'wheel']
     virtualenv: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: latest
 
-- name: "Build a virtual environment for ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+- name: " build_virtual_environments | Build a virtual environment for ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
   pip:
     requirements: '/tmp/builder/checkout/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/requirements.txt'
     virtualenv: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: latest
 
-- name: Template a file to /etc/file.conf
+- name:  build_virtual_environments | Template a file to /etc/file.conf
   ansible.builtin.template:
     src: templates/rpmvenv.json.j2
     dest: '/var/lib/venv/openstack/venv/rpmvenv/{{ _ansible_item_label.name }}.{{ _ansible_item_label.version.split("/")[1] }}.rmpvenv.json'
     force: yes
+
+    

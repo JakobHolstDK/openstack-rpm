@@ -8,19 +8,19 @@
     "core": {
         "group": "Application/System",
         "license": "MIT",
-        "name": "openstack-{{ outer_item.key  }}-{{ outer_item.value.ostackversion.split("/")[1] }}-venv",
-        "summary": "Compiled stein openstack environment for {{ outer_item.key }} ",
+        "name": "openstack-{{ _ansible_item_label.name   }}-{{ i_ansible_item_label.version.split("/")[1] }}-venv",
+        "summary": "Compiled stein openstack environment for {{ _ansible_item_label.name }} ",
         "version": "1.0.0"
     },
     "python_venv": {
-        "name": "openstack_{{ outer_item.key  }}_{{ outer_item.value.ostackversion.split("/")[1] }}",
-        "path": "/var/lib/openstack/venv/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}/venv/"
+        "name": "openstack_{{ _ansible_item_label.name  }}_{{ _ansible_item_label.version.split("/")[1] }}",
+        "path": "/var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv/"
     },
     "blocks": {
         "desc": [
-            "Virtual environment for Openstack {{ outer_item.key }} {{ outer_item.value.ostackversion }}",
+            "Virtual environment for Openstack {{ _ansible_item_label.name }} {{ _ansible_item_label.version }}",
             "-----------------------------------------------",
-            "This is a compiled version of the Openstack {{ outer_item.key }} component",
+            "This is a compiled version of the Openstack {{ _ansible_item_label.name }} component",
             "",
 	    "BLABLABLABL"
         ]
