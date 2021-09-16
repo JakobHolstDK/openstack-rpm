@@ -20,7 +20,8 @@
         { name: "swift", version: "stable/stein"}
      ]
   roles:
-   - role: ansible_role_build_ostack_components
+    - role: ansible_role_build_ostack_components
+  loop: components
 
 #- hosts: api
 #  gather_facts: yes
