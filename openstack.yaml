@@ -7,28 +7,21 @@
 
 - hosts: builders
   gather_facts: yes
-  vars:
-    components: 
-     [ 
-        { name: "keystone", version: "stable/train"}, 
-        { name: "horizon", version: "stable/train"},
-        { name: "glance", version: "stable/train"},
-        { name: "swift", version: "stable/train"},
-        { name: "keystone", version: "stable/stein"},
-        { name: "horizon", version: "stable/stein"},
-        { name: "glance", version: "stable/stein"},
-        { name: "swift", version: "stable/stein"}
-     ]
-  roles:
-    - role: ansible_role_build_ostack_components
-  loop: components
-
-#- hosts: api
-#  gather_facts: yes
-#  roles:
-#    - role: ansible-role-rabbitmq
-#    - role: ansible-role-mariadb
-
+  tasks:
+    - name: Loop over components
+      include_role:
+        name: ansible_role_build_ostack_components
+      vars:
+         component: " {{ item  }}"
+      with_items:
+           - { name: "keystone", version: "stable/train"} 
+           - { name: "horizon", version: "stable/train"}
+           - { name: "glance", version: "stable/train"}
+           - { name: "swift", version: "stable/train"}
+           - { name: "keystone", version: "stable/stein"}
+           - { name: "horizon", version: "stable/stein"}
+           - { name: "glance", version: "stable/stein"}
+           - { name: "swift", version: "stable/stein"}
 
 
 
