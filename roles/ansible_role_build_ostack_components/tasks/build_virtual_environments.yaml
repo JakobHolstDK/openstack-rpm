@@ -136,6 +136,12 @@
     virtualenv: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: latest
 
+- name: make sure dest dir is availiable
+  file:
+    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}"
+    state: directory
+    recurse: yes
+
 - name:  build_virtual_environments | Template a file to rpmvenv.json
   ansible.builtin.template:
     src: templates/rpmvenv.json.j2
@@ -144,9 +150,8 @@
 
 - name: make sure dest dir is availiable
   file:
-    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}"
-    state: directory
-    recurse: yes
+    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv"
+    state: absent
 
 - name: mv source  into dest
   shell: mv /tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv /var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv
