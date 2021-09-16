@@ -1,0 +1,1 @@
+{"pagination":{"offset":0,"limit":50,"count":1},"body":[{"subscriptionNumber":"9069769","sku":"RH00798","subscriptionName":"Red Hat Developer Subscription for Individuals","quantity":"1","startDate":"2021-04-16T00:00:00.000Z","endDate":"2022-04-15T23:59:59.000Z","status":"Active","pools":[{"id":"8a85f99f78d761fb0178d9f14cc078f9","quantity":16,"consumed":16,"type":"NORMAL"}]}]}
