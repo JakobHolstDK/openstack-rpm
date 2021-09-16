@@ -1,10 +1,4 @@
 ---
-- hosts: all
-  gather_facts: yes
-  tasks:
-   - name: Dump all variables
-     action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
-
 - hosts: builders
   gather_facts: yes
   tasks:

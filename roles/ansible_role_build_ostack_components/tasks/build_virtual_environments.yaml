@@ -1,3 +1,9 @@
+- name: Dump all variables
+  action: template src=dumpall.j2 dest=/tmp/builder.ansible_dump.all
+
+
+
+
 - name: build_virtual_environments | check if we're building on a supported os
   assert:
     fail_msg: "{{ role_name }} only supports ubuntu versions 16, 18, 20 and centos versions 6, 7!"

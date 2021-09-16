@@ -1,6 +1,3 @@
-- name: Dump all variables
-  action: template src=dumpall.j2 dest=/tmp/builder.ansible_dump.all
-
 - include: redhat.yaml
   when: ( ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] )
 
