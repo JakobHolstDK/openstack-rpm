@@ -1,6 +1,9 @@
 - include: redhat.yaml
   when: ( ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] )
 - include: build_virtual_environments.yaml
+  with_items: components
+  vars:
+     component: " {{ item  }}"
 - include: provision_virtual_environments.yaml
 
 

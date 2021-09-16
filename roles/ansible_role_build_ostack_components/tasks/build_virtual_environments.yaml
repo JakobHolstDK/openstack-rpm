@@ -101,7 +101,7 @@
   ansible.builtin.command: pip3 install rpmvenv
   become: True
 
-- name: 'clone git repo ({{ outer_item.key }} - {{ outer_item.value.ostackversion }})'
+- name: 'clone git repo ({{ components.name }} - {{ components.version }})'
   ansible.builtin.git:
     repo: 'https://github.com/openstack/{{ outer_item.key }}.git'
     dest: '/tmp/builder/checkout/{{ outer_item.key }}/{{ outer_item.value.ostackversion }}'
