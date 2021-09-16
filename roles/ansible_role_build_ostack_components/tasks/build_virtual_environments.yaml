@@ -142,6 +142,11 @@
     dest: '/var/lib/venv/openstack/venv/rpmvenv/{{ _ansible_item_label.name }}.{{ _ansible_item_label.version.split("/")[1] }}.rmpvenv.json'
     force: yes
 
+- name: Delete the original file
+  file:
+    path: "/var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}"
+    state: directory
+    recurse: yes
 
 - name: hard link the source  into destiny
   file:
@@ -153,3 +158,4 @@
   file:
     path: '/tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv'
     state: absent
+    recurse: yes
