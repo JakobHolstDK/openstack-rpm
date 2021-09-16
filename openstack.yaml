@@ -7,32 +7,20 @@
 
 - hosts: builders
   gather_facts: yes
+  vars:
+    components: 
+     [ 
+        { name: "keystone", version: "stable/train"}, 
+        { name: "horizon", version: "stable/train"},
+        { name: "glance", version: "stable/train"},
+        { name: "swift", version: "stable/train"},
+        { name: "keystone", version: "stable/stein"},
+        { name: "horizon", version: "stable/stein"},
+        { name: "glance", version: "stable/stein"},
+        { name: "swift", version: "stable/stein"}
+     ]
   roles:
    - role: ansible_role_build_ostack_components
-     components:
-             "keystone":
-                ostackversion: "stable/stein"
-             "horizon":
-                ostackversion: "stable/stein"
-             "glance":
-                ostackversion: "stable/stein"
-             "swift":
-                ostackversion: "stable/stein"
-
-
-- hosts: builders
-  gather_facts: yes
-  roles:
-   - role: ansible_role_build_ostack_components
-     components:
-             "keystone":
-                ostackversion: "stable/train"
-             "horizon":
-                ostackversion: "stable/train"
-             "glance":
-                ostackversion: "stable/train"
-             "swift":
-                ostackversion: "stable/train"
 
 #- hosts: api
 #  gather_facts: yes
