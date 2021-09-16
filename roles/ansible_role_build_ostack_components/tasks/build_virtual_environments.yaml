@@ -150,7 +150,7 @@
 
 - name: make sure dest dir is availiable
   file:
-    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv"
+    path: "/var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv"
     state: absent
 
 - name: mv source  into dest
