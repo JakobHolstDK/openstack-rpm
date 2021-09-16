@@ -28,6 +28,14 @@
     group: root
     mode: '0644'
 
+- name: build_virtual_environments | create a pip downloader
+  ansible.builtin.copy:
+    src: pip-downloader.py
+    dest: /usr/local/bin/pip-downloader.py
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: build_virtual_environments | run ldconfig in a shell
   ansible.builtin.shell: ldconfig
   become: True
