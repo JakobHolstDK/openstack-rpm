@@ -15,19 +15,19 @@
   notify: restart rabbitmq-server
 
 - name: rabbitmq_ha_config | creating queue(s)
-  command: "rabbitmqadmin declare queue name={{ rabbitmq_queue_name }} durable={{ rabbitmq_durable | lower }}"
+  command: "rabbitmqadmin declare queue name={{ ansible_role_rabbitmq_queue_name }} durable={{ ansible_role_rabbitmq_routing_durable | lower }}"
   run_once: true
   register: myresult
 
 - name: rabbitmq_ha_config | setting up ha on queue(s)
-  rabbitmq_policy: name='ha-all' pattern='{{ rabbitmq_queue_name }}' tags="{{ rabbitmq_tags }}" state=present
+  rabbitmq_policy: name='ha-all' pattern='{{ ansible_role_rabbitmq_queue_name }}' tags="{{ ansible_role_rabbitmq_tags }}" state=present
   run_once: true
 
 - name: rabbitmq_ha_config | creating exchange(s)
-  command: rabbitmqadmin declare exchange name={{ rabbitmq_exchange_name }} type={{ rabbitmq_type }}
+  command: rabbitmqadmin declare exchange name={{ ansible_role_rabbitmq_exchange_name }} type={{ ansible_role_rabbitmq_type }}
   run_once: true
 
 - name: rabbitmq_ha_config | creating binding(s)
-  command: rabbitmqadmin declare binding source={{ rabbitmq_exchange_name }} destination_type="queue" destination={{ rabbitmq_queue_name }} routing_key={{ rabbitmq_routing_key }}
+  command: rabbitmqadmin declare binding source={{ ansible_role_rabbitmq_exchange_name }} destination_type="queue" destination={{ ansible_role_rabbitmq_queue_name }} routing_key={{ ansible_role_rabbitmq_routing_key }}
   run_once: true
 

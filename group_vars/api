@@ -1,7 +1,7 @@
 #Rabbit mq vars
 ansible_role_rabbitmq_config_rabbitmq_ha: true
 ansible_role_rabbitmq_config_enable_rabbitmq_clustering: true
-ansible_role_rabbitmq_configerlang_cookie: LSKNKBELKPSTDBBCHETL
+ansible_role_rabbitmq_config_erlang_cookie: LSKNKBELKPSTDBBCHETL
 ansible_role_rabbitmq_queue_name: logstash
 ansible_role_rabbitmq_durable: true
 ansible_role_rabbitmq_exchange_name: logstash
