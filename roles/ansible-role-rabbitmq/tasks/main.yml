@@ -7,7 +7,7 @@
   register: clustered
 
 - include: rabbitmq_clustering.yml
-  when: ansible_role_rabbitmq_enable_rabbitmq_clustering and (clustered.stat.exists != True)
+  when: ansible_role_rabbitmq_config_enable_rabbitmq_clustering and (clustered.stat.exists != True)
 
 - include: rabbitmq_ha_config.yml
   when: ansbile_role_rabbitmq_config_rabbitmq_ha and ansible_role_rabbitmq_config_enable_rabbitmq_clustering
