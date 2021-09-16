@@ -8,7 +8,7 @@
 - hosts: builders
   gather_facts: yes
   roles:
-   - role: ansible-role-ostack-component
+   - role: ansible_role_build_ostack_components
      components:
              "keystone":
                 ostackversion: "stable/stein"
@@ -20,10 +20,10 @@
                 ostackversion: "stable/stein"
 
 
-- hosts: builder
+- hosts: builders
   gather_facts: yes
   roles:
-   - role: ansible-role-ostack-component
+   - role: ansible_role_build_ostack_components
      components:
              "keystone":
                 ostackversion: "stable/train"
@@ -34,11 +34,11 @@
              "swift":
                 ostackversion: "stable/train"
 
-- hosts: api
-  gather_facts: yes
-  roles:
-    - role: ansible-role-rabbitmq
-    - role: ansible-role-mariadb
+#- hosts: api
+#  gather_facts: yes
+#  roles:
+#    - role: ansible-role-rabbitmq
+#    - role: ansible-role-mariadb
 
 
 
