@@ -12,6 +12,14 @@
 echo "#Auto generated inventory for virt-lightening" > inventory.remote
 
 echo "" >> inventory.remote
+echo "[builders]" >> inventory.remote 
+vl ansible_inventory | grep builder >> inventory.remote
+
+echo "" >> inventory.remote
+echo "[api]" >> inventory.remote 
+vl ansible_inventory | grep api >> inventory.remote
+
+echo "" >> inventory.remote
 echo "[api]" >> inventory.remote 
 vl ansible_inventory | grep api >> inventory.remote
 
