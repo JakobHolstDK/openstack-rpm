@@ -138,7 +138,7 @@
 
 - name: make sure dest dir is availiable
   file:
-    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}"
+    path: "/var/lib openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/rpmvenv"
     state: directory
     recurse: yes
 
