@@ -8,7 +8,7 @@
     "core": {
         "group": "Application/System",
         "license": "MIT",
-        "name": "openstack-{{ _ansible_item_label.name   }}-{{ i_ansible_item_label.version.split("/")[1] }}-venv",
+        "name": "openstack-{{ _ansible_item_label.name   }}-{{ _ansible_item_label.version.split("/")[1] }}-venv",
         "summary": "Compiled stein openstack environment for {{ _ansible_item_label.name }} ",
         "version": "1.0.0"
     },
