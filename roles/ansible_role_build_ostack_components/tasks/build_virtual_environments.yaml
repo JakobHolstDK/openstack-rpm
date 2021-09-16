@@ -152,7 +152,6 @@
   file:
     path: "/var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv"
     state: absent
-    recurse: yes
 
 - name: mv source  into dest
   shell: mv /tmp/builder/virtualenvironments/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv /var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv
