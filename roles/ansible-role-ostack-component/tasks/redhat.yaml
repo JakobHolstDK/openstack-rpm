@@ -10,3 +10,7 @@
     that:
       ansible_distribution|lower == "redhat" and ansible_distribution_major_version|int in [8] 
 
+- name: ansible_role_build_ostack_components | Put SELinux in permissive mode, logging actions that would be blocked.
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
