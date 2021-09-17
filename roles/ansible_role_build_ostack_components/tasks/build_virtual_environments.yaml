@@ -170,7 +170,7 @@
 - name: " build_virtual_environments | Build a virtual for building packages face 2 "
   pip:
     name: ['setuptools', 'setuptools-rust', 'wheel',  'requirements-parser', 'requests' , 'pyp2rpm'  ]
-    virtualenv: ''
+    virtualenv: '/var/lib/openstack/venv/builder/venv'
     state: latest
 
 #Download all the sources for building rpms
