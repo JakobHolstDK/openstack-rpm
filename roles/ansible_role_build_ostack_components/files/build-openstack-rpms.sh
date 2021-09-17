@@ -17,7 +17,7 @@ do
             echo "`date`: Setup cfg file is missing"
             echo "[metadata]" > setup.cfg
             echo "name = opestackrpm-${MODULE}" >> setup.cfg
-	  fi
+	      fi
 
           grep -i "name =" setup.cfg >/dev/null 2>&1
           if [[ $? == 0 ]];
@@ -42,11 +42,10 @@ do
             fi
           fi
          grep "name = openstackrpm-" setup.cfg >/dev/null 2>&1
-	if [[ $? == 0 ]];
-        then
-	    python setup.py bdist_rpm
-	fi
-
+	     if [[ $? == 0 ]];
+         then
+	       /var/lib/openstack/venv/builder/venv/bin/python setup.py bdist_rpm
+	     fi
        fi
     done
 done
