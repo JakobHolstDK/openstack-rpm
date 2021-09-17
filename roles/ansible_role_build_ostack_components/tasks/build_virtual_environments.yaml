@@ -160,6 +160,6 @@
 
 - name: " build_virtual_environments | Build a virtual environment face 2 : update pip ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
   pip:
-    name: ['setuptools', 'setuptools-rust', 'wheel',  'requirements-parser', 'request' ]
+    name: ['setuptools', 'setuptools-rust', 'wheel',  'requirements-parser', 'requests' ]
     virtualenv: '/var/lib/openstack/venv/builder/venv'
     state: latest
