@@ -34,7 +34,7 @@
     dest: /usr/local/bin/pip-downloader.py
     owner: root
     group: root
-    mode: '0644'
+    mode: '0755'
 
 - name: build_virtual_environments | run ldconfig in a shell
   ansible.builtin.shell: ldconfig
