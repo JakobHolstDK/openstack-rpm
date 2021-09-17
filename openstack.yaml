@@ -9,13 +9,6 @@
          component: " {{ item  }}"
       with_items:
            - { name: "keystone", version: "stable/train"} 
-           - { name: "horizon", version: "stable/train"}
-           - { name: "glance", version: "stable/train"}
-           - { name: "swift", version: "stable/train"}
-           - { name: "keystone", version: "stable/stein"}
-           - { name: "horizon", version: "stable/stein"}
-           - { name: "glance", version: "stable/stein"}
-           - { name: "swift", version: "stable/stein"}
 
 
 
