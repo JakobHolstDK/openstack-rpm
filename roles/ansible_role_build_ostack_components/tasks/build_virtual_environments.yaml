@@ -28,10 +28,9 @@
     group: root
     mode: '0644'
 
-
 - name: build_virtual_environments | create builder script
   ansible.builtin.copy:
-    src: pip-downloader.py
+    src: build-openstack-rpms.sh
     dest: /usr/local/bin/buid-openstack-rpms.sh
     owner: root
     group: root
