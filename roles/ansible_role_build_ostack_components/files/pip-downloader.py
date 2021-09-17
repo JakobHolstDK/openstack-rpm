@@ -1,3 +1,5 @@
+#Python requierement downloader.
+
 import json
 import os
 import sys
@@ -21,9 +23,9 @@ from pip._vendor.packaging.specifiers import SpecifierSet
 
 
 
-PREFIX = 'awxrpm'
-PACKAGER = 'automates <info@miracle.dk>'
-PACKAGES_DIR="/tmp/packages"
+PREFIX = 'ostack'
+PACKAGER = 'automate <info@miracle.dk>'
+PACKAGES_DIR="/var/lib/ostack/packages"
 
 def generate_spec_for(package_name, reqs_data, build_reqs_data, pkgs_dir):
     pkg_dir = glob.glob(f'{pkgs_dir}/{package_name}/*/')[0]
@@ -88,13 +90,13 @@ def download_best_package(package_name, specifier='', path=PACKAGES_DIR):
 
 
 if __name__ == '__main__':
-    f = open("/tmp/awxrpm.requirements.txt", "rt")
+    f = open("./requirements.txt", "rt")
     lines = f.readlines()
     for line in lines:
         myname=line.split("==")[0].lower()
         myspec="=="+line.split("==")[1]
         try:
-           download_best_package(myname, myspec, "/tmp/awx/packages")
+           download_best_package(myname, myspec, PACKAGES_DIR )
         except:
            print("failed)")
 
