@@ -55,6 +55,7 @@
     - "gcc"
     - "zlib-devel"
     - "rpm-build"
+    - "tree"
       #    - "liberasurecode-devel"
 
 
