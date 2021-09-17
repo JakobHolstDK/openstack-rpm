@@ -151,4 +151,15 @@
 
 - name:  build_virtual_environments | create the final requierements.txt file
   shell: /var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/venv/bin/pip freeze >   /var/lib/openstack/venv/{{ _ansible_item_label.name }}/{{ _ansible_item_label.version }}/requirements.txt
-  
+
+- name: " build_virtual_environments | Build a virtual environment face 1 init virtual env  ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+  pip:
+    name: pip
+    virtualenv: '/var/lib/openstack/venv/builder/venv'
+    state: latest
+
+- name: " build_virtual_environments | Build a virtual environment face 2 : update pip ({{ _ansible_item_label.name }} - {{ _ansible_item_label.version }})"
+  pip:
+    name: ['setuptools', 'setuptools-rust', 'wheel',  'requirement-parser', 'request' ]
+    virtualenv: '/var/lib/openstack/venv/builder/venv'
+    state: latest
