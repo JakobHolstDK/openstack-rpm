@@ -10,6 +10,3 @@
       with_items:
            - { name: "keystone", version: "stable/train"} 
 
-
-
-
